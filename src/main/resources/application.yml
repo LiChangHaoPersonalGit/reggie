@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  application:
+    #应用的名称，不写的话会自动使用项目名
+    name: reggie
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: root
+  servlet:
+    multipart:
+      #单文件上传最大2MB
+      max-file-size: 2MB
+      #整个请求中的文件大小，既多文件上传大小最大100MB
+      max-request-size: 100MB
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+#自定义properties参数，用于动态生成文件上传服务器后存在本地磁盘的位置
+reggie:
+  path: D:\My_C_Files\Desktop\images\
